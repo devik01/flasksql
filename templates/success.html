@@ -3,16 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title> success </title>
-        <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">                    
+        <style>
+            body {
+                background-color: darkslategrey;
+                color: azure;
+                font-size: 1.1em;
+            }
+            h1 {
+                color: coral;
+            }
+            #intro {
+                font-size: 1.3em;
+            }
+            .colorful {
+                color: orange;
+            }
+        </style>                   
     </head>
     <body>
-        <div align="center">
-          <div align="center" class="border">
+        
              <div class="header">
-                <h1 class="word">Hi!</h1>
-             </div></br></br></br>
-                <h1 class="bottom">
-                   <p>Welcome to the home page...</p>
+               <center><h1>Hi there {% for row in data %} {{row[0]}}  {% endfor %} !! </h1></center> 
+             </div></br>
+               
+                   <p id="intro">Welcome to the home page...</p>
+                   <p class="colorful">
                    <tbody>
                 {% for row in data %} 
                     <tr>
@@ -23,10 +38,10 @@
                     </tr>
                 {% endfor %}   
                    </tbody>
+                   </p>
                            
-                </h1></br></br></br>
+                </br></br></br>
                 
-          </div>
-        </div>
+          
     </body>
 </html>
