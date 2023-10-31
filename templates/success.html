@@ -1,0 +1,32 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> success </title>
+        <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">                    
+    </head>
+    <body>
+        <div align="center">
+          <div align="center" class="border">
+             <div class="header">
+                <h1 class="word">Hi!</h1>
+             </div></br></br></br>
+                <h1 class="bottom">
+                   <p>Welcome to the home page...</p>
+                   <tbody>
+                {% for row in data %} 
+                    <tr>
+                        <td>Name :{{row[2]}}</td></br></br>
+                        <td>Roll number :{{row[3]}}</td></br></br>
+                        <td>Stream opting :{{row[4]}}</td></br></br>
+                        
+                    </tr>
+                {% endfor %}   
+                   </tbody>
+                           
+                </h1></br></br></br>
+                
+          </div>
+        </div>
+    </body>
+</html>
