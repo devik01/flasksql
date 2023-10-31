@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,session
 from flask_mysqldb import MySQL
 
+
 app = Flask(__name__)
+app.secret_key = "deviapp"
+
+
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -16,24 +20,19 @@ def func1():
 
 @app.route('/login', methods=['POST'])
 def login():
+    
     if request.method == 'POST' and 'uname' in request.form and 'pass' in request.form:
         username = request.form['uname']
         password = request.form['pass']
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM usertable WHERE user_id=%s AND password_user=%s", (username, password))
-        account = cursor.fetchone()
-        if account:
-            return redirect(url_for("success"))
+        data = cursor.fetchall()
+        if data:
+            return render_template('success.html',data=data)
         else:
-            return redirect(url_for("fail"))
-
-@app.route('/success')
-def success():
-    return "Success!"
-
-@app.route('/fail')
-def fail():
-    return "Unsuccessful"
+            error="Invalid credentials,try again!"
+            return render_template('login.html',error=error)
+   
 
 if __name__ == '__main__':
     app.run(debug=True)
