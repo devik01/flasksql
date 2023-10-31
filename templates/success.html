@@ -1,47 +1,82 @@
-
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title> success </title>
-        <style>
-            body {
-                background-color: darkslategrey;
-                color: azure;
-                font-size: 1.1em;
-            }
-            h1 {
-                color: coral;
-            }
-            #intro {
-                font-size: 1.3em;
-            }
-            .colorful {
-                color: orange;
-            }
-        </style>                   
-    </head>
-    <body>
-        
-             <div class="header">
-               <center><h1>Hi there {% for row in data %} {{row[0]}}  {% endfor %} !! </h1></center> 
-             </div></br>
-               
-                   <p id="intro">Welcome to the home page...</p>
-                   <p class="colorful">
-                   <tbody>
-                {% for row in data %} 
-                    <tr>
-                        <td>Name :{{row[2]}}</td></br></br>
-                        <td>Roll number :{{row[3]}}</td></br></br>
-                        <td>Stream opting :{{row[4]}}</td></br></br>
-                        
-                    </tr>
-                {% endfor %}   
-                   </tbody>
-                   </p>
-                           
-                </br></br></br>
-                
-          
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #intro {
+            font-size: 1.3em;
+        }
+
+        .colorful {
+            color: orange;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .data-table tr {
+            background-color: #fff;
+        }
+
+        .data-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .data-table td:nth-child(2n) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi there
+            {% for row in data %}
+                {{ row[0] }}
+            {% endfor %}
+            !!
+        </h1>
+        <p id="intro">Welcome to the home page...</p>
+        <p class="colorful">
+            <table class="data-table">
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            <td>Name: {{ row[2] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Roll number: {{ row[3] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Stream opting: {{ row[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </p>
+    </div>
+</body>
 </html>
