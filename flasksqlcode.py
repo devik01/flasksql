@@ -1,11 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for,session
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
-
 
 app = Flask(__name__)
 app.secret_key = "deviapp"
-
-
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -33,6 +30,5 @@ def login():
             error="Invalid credentials,try again!"
             return render_template('login.html',error=error)
    
-
 if __name__ == '__main__':
     app.run(debug=True)
